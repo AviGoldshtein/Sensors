@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Sensors.Entiteis;
+using Sensors.Entiteis.Sensors;
+using Sensors.Factorys;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +13,10 @@ namespace Sensors
     {
         static void Main(string[] args)
         {
+            InvestigationManager investigation = new InvestigationManager();
+
+
+            investigation.run();
         }
     }
 }

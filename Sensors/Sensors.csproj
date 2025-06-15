@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entiteis\IranianAgent.cs" />
+    <Compile Include="Entiteis\Sensors\BaseSensor.cs" />
+    <Compile Include="Entiteis\Sensors\Sensor.cs" />
+    <Compile Include="Factorys\IranianAigentFactory.cs" />
+    <Compile Include="Factorys\SensorFactory.cs" />
+    <Compile Include="InvestigationManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

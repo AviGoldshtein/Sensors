@@ -43,12 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entiteis\IranianAgent.cs" />
+    <Compile Include="Entiteis\Agents\FootSoldier.cs" />
+    <Compile Include="Entiteis\Agents\IranianAgent.cs" />
+    <Compile Include="Entiteis\Agents\OrganizationLeader.cs" />
+    <Compile Include="Entiteis\Agents\SeniorCommander.cs" />
+    <Compile Include="Entiteis\Agents\SquadLeader.cs" />
     <Compile Include="Entiteis\Sensors\BaseSensor.cs" />
-    <Compile Include="Entiteis\Sensors\Sensor.cs" />
+    <Compile Include="Entiteis\Sensors\Audio.cs" />
+    <Compile Include="Entiteis\Sensors\Light.cs" />
+    <Compile Include="Entiteis\Sensors\Magnetic.cs" />
+    <Compile Include="Entiteis\Sensors\Motion.cs" />
+    <Compile Include="Entiteis\Sensors\Pulse.cs" />
+    <Compile Include="Entiteis\Sensors\Signal.cs" />
+    <Compile Include="Entiteis\Sensors\Thermal.cs" />
     <Compile Include="Factorys\IranianAigentFactory.cs" />
     <Compile Include="Factorys\SensorFactory.cs" />
     <Compile Include="InvestigationManager.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

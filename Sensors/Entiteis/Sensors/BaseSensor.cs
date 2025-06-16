@@ -9,7 +9,7 @@ namespace Sensors.Entiteis
 {
     internal abstract class BaseSensor
     {
-        protected int CountToActivate;
+        //protected int CountToActivate;
         protected string Name;
 
         public BaseSensor(string name)
@@ -17,12 +17,15 @@ namespace Sensors.Entiteis
             Name = name;
         }
 
-
-
-
         public virtual void Activate(IranianAgent iranian)
         {
-            bool nothingMatched;
+            bool allExposed = true;
+            int counterExposedSensors = 0;
+            // print for debugging
+            Console.WriteLine(iranian);
+
+
+            bool nothingMatched = true;
             List<BaseSensor> tempStorege = new List<BaseSensor>();
 
             foreach(string sensorWeaknes in iranian.GetRequeredTypeSensors())
@@ -35,23 +38,28 @@ namespace Sensors.Entiteis
                         nothingMatched = false;
                         tempStorege.Add(sensor);
                         iranian.GetAttachedSensors().Remove(sensor);
-                        Console.WriteLine("something matched");
+                        Console.WriteLine("something matched");       // for debugging
+                        counterExposedSensors++;
                         break;
                     }
                 }
                 if (nothingMatched)
                 {
-                    Console.WriteLine("nothing matched");
-                    break;
+                    Console.WriteLine("somthing is missing in order to expose the agent");
+                    allExposed = false;
                 }
             }
+            Console.WriteLine($"you already exposed {counterExposedSensors} / {iranian.GetRequeredTypeSensors().Length}");
+            if (allExposed)
+            {
+                Console.WriteLine("the agent is exposed");
+            }
 
-            foreach(BaseSensor sensor in tempStorege)
+            foreach (BaseSensor sensor in tempStorege)
             {
                 iranian.GetAttachedSensors().Add(sensor);
             }
         }
-        
         public override string ToString()
         {
             return $"{Name}";

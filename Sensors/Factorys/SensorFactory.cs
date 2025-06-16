@@ -10,14 +10,18 @@ namespace Sensors.Factorys
 {
     internal static class SensorFactory
     {
-        public static string[] TypeOfSensors = { "Audio", "Thermal", "Pulse", "Motion", "Magnetic", "Signal", "Light" };
-        //public static Random rnd = new Random();
+        public static string[] TypeOfSensors = { "Audio", "Thermal", "Pulse", "Motion", "Magnetic", "Signal", "Light" };    //  not in use   //
 
 
-        public static BaseSensor CreateRandomSensor(Random rnd)
+        public static BaseSensor CreateRandomSensor(Random rnd)   // not in use  //
         {
             string type = TypeOfSensors[rnd.Next(TypeOfSensors.Length)];
-            BaseSensor sensor = new Sensor(type);
+            BaseSensor sensor = new Audio(type);
+            return sensor;
+        }
+        public static BaseSensor CreateSensorByType(string typeAsked)
+        {
+            BaseSensor sensor = new Audio(typeAsked);
             return sensor;
         }
     }

@@ -10,9 +10,8 @@ namespace Sensors.Factorys
     internal static class IranianAigentFactory
     {
         public static string[] Ranks = { "Foot", "Squad", "Senior", "Organization" };
-
         public static string[] TypeOfSensors = { "Audio", "Thermal", "Pulse", "Motion", "Magnetic", "Signal", "Light" };
-        //public static Random rnd = new Random();
+
         public static IranianAgent CreateRandomAgent(Random rnd)
         {
             int capasity = 0;

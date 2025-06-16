@@ -25,8 +25,8 @@ namespace Sensors.Entiteis
         public void AttachSensor(BaseSensor sensor)
         {
             AttachedSensors.Add(sensor);
+            sensor.Activate(this);
         }
-
         public string[] GetRequeredTypeSensors() => this.RequeredTypeSensors;
         public List<BaseSensor> GetAttachedSensors() => this.AttachedSensors;
         public override string ToString()

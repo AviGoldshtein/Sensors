@@ -10,31 +10,39 @@ namespace Sensors
 {
     internal class InvestigationManager
     {
+        private List<IranianAgent> PrisonCell = new List<IranianAgent>();
+        public IranianAgent IranianOnTheChair;
+        //public bool IsExsposed;    // still not in use
+
         public void run()
         {
-            Random rnd = new Random();
-
-            IranianAgent iranian = IranianAigentFactory.CreateRandomAgent(rnd);
-            //Console.WriteLine(iranian);
-
-            
-            
-            //Console.WriteLine(sensor);
-
-            for (int i = 0; i < 7; i++)
+            Menu.ShowMenu(new Random(), this);
+        }
+        public void AtechSensorToManOnTheChair()
+        {
+            BaseSensor sensor = SensorFactory.CreateSensorByType(Menu.GetChoiceSensor());
+            if (IranianOnTheChair == null)
             {
-                BaseSensor sensor = SensorFactory.CreateRandomSensor(rnd);
-                iranian.AttachSensor(sensor);
+                Console.WriteLine("the room is empty, enter someone first");
             }
-            
-            Console.WriteLine(iranian);
-            //sensor.Activate(iranian);
+            else
+            {
+                IranianOnTheChair.AttachSensor(sensor);
+            }
+        }
+        public void EnterAgentToTheRoom(IranianAgent agent)
+        {
+            string RoomStatusMessage = this.IranianOnTheChair == null ? "entered an" : "changed the";
+            this.IranianOnTheChair = agent;
 
-
-            BaseSensor sensor2 = SensorFactory.CreateRandomSensor(rnd);
-            iranian.AttachSensor(sensor2);
-
-            sensor2.Activate(iranian);
+            if (this.IranianOnTheChair != null)
+            {
+                Console.WriteLine($"you have {RoomStatusMessage} agent in the room!");
+            }
+            else
+            {
+                Console.WriteLine("for some reason the room is steel empty");
+            }
         }
     }
 }

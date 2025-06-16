@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Sensors.Entiteis.Sensors
+{
+    internal class Audio : BaseSensor
+    {
+        public Audio(string name) :  base(name) { }
+    }
+}

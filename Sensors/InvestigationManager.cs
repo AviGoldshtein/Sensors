@@ -1,5 +1,6 @@
 ﻿using Sensors.Entiteis;
 using Sensors.Factorys;
+using Sensors.Serveces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,8 @@ namespace Sensors
         {
             UserTurn = 0;
             AgentTurn = 0;
-            EnterAgentToTheRoom(IranianAigentFactory.CreateAgentOfType("Foot", new Random()));
-            Menu.ShowMenu(new Random(), this);
+            EnterAgentToTheRoom(IranianAigentFactory.CreateAgentOfType("Foot", Rand._random));
+            Menu.ShowMenu(Rand._random, this);
         }
         public void AtechSensorToManOnTheChair()
         {
@@ -76,7 +77,7 @@ namespace Sensors
                     TypeForNextLevel = "Organization";
                     break;
             }
-            EnterAgentToTheRoom(IranianAigentFactory.CreateAgentOfType(TypeForNextLevel, new Random()));
+            EnterAgentToTheRoom(IranianAigentFactory.CreateAgentOfType(TypeForNextLevel, Rand._random));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sensors.Serveces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Sensors.Entiteis
 {
     internal class IranianAgent
     {
-        protected Random random = new Random();
+        protected Random random = Rand._random;
         public string Type;
         public string Affiliation = "not implemented yet :-)";
         public string[] RequeredTypeSensors;

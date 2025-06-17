@@ -9,16 +9,16 @@ namespace Sensors.Entiteis
     internal class IranianAgent
     {
         //public static Dictionary<string, int> RanksAndCapasity = new Dictionary<string, int>();
-        
 
-        private string Rank;
+        protected Random random = new Random();
+        public string Type;
 
-        private string[] RequeredTypeSensors;
-        private List<BaseSensor> AttachedSensors = new List<BaseSensor>();
+        protected string[] RequeredTypeSensors;
+        protected List<BaseSensor> AttachedSensors = new List<BaseSensor>();
 
-        public IranianAgent(string rank, string[] requeredTypeSensors)
+        public IranianAgent(string type, string[] requeredTypeSensors)
         {
-            Rank = rank;
+            Type = type;
             RequeredTypeSensors = requeredTypeSensors;
         }
 
@@ -29,9 +29,17 @@ namespace Sensors.Entiteis
         }
         public string[] GetRequeredTypeSensors() => this.RequeredTypeSensors;
         public List<BaseSensor> GetAttachedSensors() => this.AttachedSensors;
+        public void SetRequeredTypeSensors(string[] requeredTypeSensors)
+        {
+            RequeredTypeSensors = requeredTypeSensors;
+        }
+        public void ClearAttachedSensors()
+        {
+            AttachedSensors.Clear();
+        }
         public override string ToString()
         {
-            return $"Rank: {Rank}\n" +
+            return $"Rank: {Type}\n" +
                 $"RequeredTypeSensors: {string.Join(", ", RequeredTypeSensors.ToList())}\n" +
                 $"SensorsAttached: {string.Join(", ", AttachedSensors.ToList()) }\n";
         }

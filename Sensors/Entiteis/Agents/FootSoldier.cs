@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sensors.Entiteis.Agents
 {
-    internal class FootSoldier
+    internal class FootSoldier : IranianAgent
     {
+        public FootSoldier(string rank, string[] requeredTypeSensors) : base(rank, requeredTypeSensors) { }
     }
 }

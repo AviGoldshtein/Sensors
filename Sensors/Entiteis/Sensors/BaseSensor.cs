@@ -9,7 +9,7 @@ namespace Sensors.Entiteis
 {
     internal abstract class BaseSensor
     {
-        //protected int CountToActivate;
+        InvestigationManager investigationManager = InvestigationManager._singelInstance;
         protected string Name;
 
         public BaseSensor(string name)
@@ -49,10 +49,11 @@ namespace Sensors.Entiteis
                     allExposed = false;
                 }
             }
-            Console.WriteLine($"you already exposed {counterExposedSensors} / {iranian.GetRequeredTypeSensors().Length}");
+            Console.WriteLine($"exposed sesors: {counterExposedSensors} / {iranian.GetRequeredTypeSensors().Length}");
             if (allExposed)
             {
-                Console.WriteLine("the agent is exposed");
+                Console.WriteLine("congragulations!!!\nthe agent is exposed\nyou are ready for the next level!\n");
+                investigationManager.MoveToTheNextLevel(iranian);
             }
 
             foreach (BaseSensor sensor in tempStorege)

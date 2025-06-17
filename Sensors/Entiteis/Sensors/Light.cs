@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sensors.Entiteis.Sensors
 {
-    internal class Light
+    internal class Light : BaseSensor
     {
+        public Light(string name) : base(name) { }
     }
 }

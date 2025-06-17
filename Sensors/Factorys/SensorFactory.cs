@@ -21,8 +21,24 @@ namespace Sensors.Factorys
         }
         public static BaseSensor CreateSensorByType(string typeAsked)
         {
-            BaseSensor sensor = new Audio(typeAsked);
-            return sensor;
+            switch (typeAsked)
+            {
+                case "Audio":
+                    return new Audio(typeAsked);
+                case "Thermal":
+                    return new Thermal(typeAsked);
+                case "Pulse":
+                    return new Pulse(typeAsked);
+                case "Motion":
+                    return new Motion(typeAsked);
+                case "Magnetic":
+                    return new Magnetic(typeAsked);
+                case "Signal":
+                    return new Signal(typeAsked);
+                case "Light":
+                    return new Light(typeAsked);
+            }
+            return new Audio(typeAsked);
         }
     }
 }

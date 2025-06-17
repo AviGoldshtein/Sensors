@@ -8,13 +8,12 @@ namespace Sensors.Entiteis
 {
     internal class IranianAgent
     {
-        //public static Dictionary<string, int> RanksAndCapasity = new Dictionary<string, int>();
-
         protected Random random = new Random();
         public string Type;
-
-        protected string[] RequeredTypeSensors;
+        public string Affiliation = "not implemented yet :-)";
+        public string[] RequeredTypeSensors;
         protected List<BaseSensor> AttachedSensors = new List<BaseSensor>();
+        public List<BaseSensor> AttachedSensoesToRemove = new List<BaseSensor>();
 
         public IranianAgent(string type, string[] requeredTypeSensors)
         {
@@ -27,7 +26,7 @@ namespace Sensors.Entiteis
             AttachedSensors.Add(sensor);
             sensor.Activate(this);
         }
-        public string[] GetRequeredTypeSensors() => this.RequeredTypeSensors;
+        public string[] GetWeaknesListSensors() => this.RequeredTypeSensors;
         public List<BaseSensor> GetAttachedSensors() => this.AttachedSensors;
         public void SetRequeredTypeSensors(string[] requeredTypeSensors)
         {
@@ -36,6 +35,15 @@ namespace Sensors.Entiteis
         public void ClearAttachedSensors()
         {
             AttachedSensors.Clear();
+        }
+        public virtual void AttackBack()
+        {
+            MoveTheTurnForward();
+        }
+        public void MoveTheTurnForward()
+        {
+            InvestigationManager._SingleInstance.AgentTurn++;
+            Console.WriteLine($"{this.Type} is speakink: my turn number: {InvestigationManager._SingleInstance.AgentTurn}");
         }
         public override string ToString()
         {

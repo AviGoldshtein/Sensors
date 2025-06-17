@@ -8,10 +8,29 @@ namespace Sensors.Entiteis.Agents
 {
     internal class OrganizationLeader : IranianAgent
     {
-        private int Counterattack;
+        private int Counterattack;         //  not in use
         public OrganizationLeader(string rank, string[] requeredTypeSensors) : base(rank, requeredTypeSensors) { }
 
-        public void TryRemoveRandomSensors()
+        public override void AttackBack()
+        {
+            MoveTheTurnForward();
+            if (InvestigationManager._SingleInstance.AgentTurn % 10 == 0)
+            {
+                this.AttachedSensors.Clear();
+            }
+            if (InvestigationManager._SingleInstance.AgentTurn % 3 == 0)
+            {
+                if (this.AttachedSensors.Count() > 0)
+                {
+                    int randomIndex = random.Next(this.AttachedSensors.Count());
+                    this.AttachedSensors.RemoveAt(randomIndex);
+                }
+            }
+        }
+
+
+
+        public void TryRemoveRandomSensors()        //  not in use
         {
             if (Counterattack >= 3)
             {

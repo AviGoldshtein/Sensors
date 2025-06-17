@@ -9,29 +9,32 @@ namespace Sensors.Entiteis
 {
     internal abstract class BaseSensor
     {
-        InvestigationManager investigationManager = InvestigationManager._singelInstance;
-        protected string Name;
+        public Random random = new Random();
+        public string Name { get; private set; }
 
         public BaseSensor(string name)
         {
             Name = name;
         }
 
-        public virtual void Activate(IranianAgent iranian)
+        public void Activate(IranianAgent iranian)
         {
             bool allExposed = true;
             int counterExposedSensors = 0;
-            // print for debugging
-            Console.WriteLine(iranian);
+            Console.WriteLine(iranian);    // print for debugging
 
-
-            bool nothingMatched = true;
+            bool nothingMatched;
             List<BaseSensor> tempStorege = new List<BaseSensor>();
 
-            foreach(string sensorWeaknes in iranian.GetRequeredTypeSensors())
+            foreach (BaseSensor sensor in iranian.GetAttachedSensors())
+            {
+                sensor.Act(iranian);
+            }
+
+            foreach (string sensorWeaknes in iranian.GetWeaknesListSensors())
             {
                 nothingMatched = true;
-                foreach(BaseSensor sensor in iranian.GetAttachedSensors())
+                foreach (BaseSensor sensor in iranian.GetAttachedSensors())
                 {
                     if (sensor.Name == sensorWeaknes)
                     {
@@ -45,21 +48,35 @@ namespace Sensors.Entiteis
                 }
                 if (nothingMatched)
                 {
-                    Console.WriteLine("somthing is missing in order to expose the agent");
+                    Console.WriteLine("somthing is missing in order to expose the agent");   //   for debugging
                     allExposed = false;
                 }
             }
-            Console.WriteLine($"exposed sesors: {counterExposedSensors} / {iranian.GetRequeredTypeSensors().Length}");
-            if (allExposed)
-            {
-                Console.WriteLine("congragulations!!!\nthe agent is exposed\nyou are ready for the next level!\n");
-                investigationManager.MoveToTheNextLevel(iranian);
-            }
+            Console.WriteLine($"exposed snesors: {counterExposedSensors} / {iranian.GetWeaknesListSensors().Length}\n");
 
             foreach (BaseSensor sensor in tempStorege)
             {
                 iranian.GetAttachedSensors().Add(sensor);
             }
+
+            foreach(BaseSensor sensorToRemove in iranian.AttachedSensoesToRemove)
+            {
+                iranian.GetAttachedSensors().Remove(sensorToRemove);
+            }
+
+            if (allExposed)
+            {
+                Console.WriteLine("\ncongragulations!!!\nthe agent is exposed\nyou are ready for the next level!\n\n");
+                InvestigationManager._SingleInstance.MoveToTheNextLevel(iranian);
+            }
+            else
+            {
+                iranian.AttackBack();
+            }
+        }
+        public virtual void Act(IranianAgent iranian)
+        {
+            Console.WriteLine($"{this.Name} is acting..............on {iranian.Type}");
         }
         public override string ToString()
         {

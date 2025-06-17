@@ -10,7 +10,7 @@ namespace Sensors
 {
     internal class InvestigationManager
     {
-        public static readonly InvestigationManager _singelInstance = new InvestigationManager();
+        public static readonly InvestigationManager _SingleInstance = new InvestigationManager();
 
         //private List<IranianAgent> PrisonCell = new List<IranianAgent>();
         //public bool IsExsposed;    // still not in use
@@ -30,7 +30,6 @@ namespace Sensors
         public void AtechSensorToManOnTheChair()
         {
             UserTurn++;
-            AgentTurn++;
             Console.WriteLine($"your turn is: {UserTurn}");
 
             BaseSensor sensor = SensorFactory.CreateSensorByType(Menu.GetChoiceSensor());
@@ -45,6 +44,7 @@ namespace Sensors
         }
         public void EnterAgentToTheRoom(IranianAgent agent)
         {
+            AgentTurn = 0;
             string RoomStatusMessage = this.IranianOnTheChair == null ? "entered an" : "changed the";
             this.IranianOnTheChair = agent;
 

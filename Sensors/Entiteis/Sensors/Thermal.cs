@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sensors.Entiteis.Sensors
 {
-    internal class Thermal
+    internal class Thermal : BaseSensor
     {
+        public Thermal(string name) : base(name) { }
     }
 }

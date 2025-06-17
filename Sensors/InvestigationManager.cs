@@ -10,16 +10,29 @@ namespace Sensors
 {
     internal class InvestigationManager
     {
-        private List<IranianAgent> PrisonCell = new List<IranianAgent>();
-        public IranianAgent IranianOnTheChair;
+        public static readonly InvestigationManager _singelInstance = new InvestigationManager();
+
+        //private List<IranianAgent> PrisonCell = new List<IranianAgent>();
         //public bool IsExsposed;    // still not in use
 
-        public void run()
+        public int UserTurn;
+        public int AgentTurn;
+
+        public IranianAgent IranianOnTheChair;
+
+        public void StartInvestigation()
         {
+            UserTurn = 0;
+            AgentTurn = 0;
+            EnterAgentToTheRoom(IranianAigentFactory.CreateAgentOfType("Foot", new Random()));
             Menu.ShowMenu(new Random(), this);
         }
         public void AtechSensorToManOnTheChair()
         {
+            UserTurn++;
+            AgentTurn++;
+            Console.WriteLine($"your turn is: {UserTurn}");
+
             BaseSensor sensor = SensorFactory.CreateSensorByType(Menu.GetChoiceSensor());
             if (IranianOnTheChair == null)
             {
@@ -43,6 +56,27 @@ namespace Sensors
             {
                 Console.WriteLine("for some reason the room is steel empty");
             }
+        }
+        public void MoveToTheNextLevel(IranianAgent PreviousAgent)
+        {
+            string PreviousAgentType = PreviousAgent.Type;
+            string TypeForNextLevel = "";
+            switch (PreviousAgentType)
+            {
+                case "Foot":
+                    TypeForNextLevel = "Squad";
+                    break;
+                case "Squad":
+                    TypeForNextLevel = "Senior";
+                    break;
+                case "Senior":
+                    TypeForNextLevel = "Organization";
+                    break;
+                default:
+                    TypeForNextLevel = "Organization";
+                    break;
+            }
+            EnterAgentToTheRoom(IranianAigentFactory.CreateAgentOfType(TypeForNextLevel, new Random()));
         }
     }
 }

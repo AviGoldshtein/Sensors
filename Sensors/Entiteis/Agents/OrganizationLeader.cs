@@ -6,7 +6,22 @@ using System.Threading.Tasks;
 
 namespace Sensors.Entiteis.Agents
 {
-    internal class OrganizationLeader
+    internal class OrganizationLeader : IranianAgent
     {
+        private int Counterattack;
+        public OrganizationLeader(string rank, string[] requeredTypeSensors) : base(rank, requeredTypeSensors) { }
+
+        public void TryRemoveRandomSensors()
+        {
+            if (Counterattack >= 3)
+            {
+                if (AttachedSensors.Count() > 0)
+                {
+                    int index = random.Next(AttachedSensors.Count() - 1);
+                    AttachedSensors.RemoveAt(index);
+                }
+            }
+            Counterattack = 0;
+        }
     }
 }

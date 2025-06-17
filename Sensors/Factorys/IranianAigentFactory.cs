@@ -1,4 +1,5 @@
 ﻿using Sensors.Entiteis;
+using Sensors.Entiteis.Agents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,45 @@ namespace Sensors.Factorys
 
             IranianAgent agent = new IranianAgent(rank, RequiredSensorTypes);
             return agent;
+        }
+
+
+
+
+
+
+
+
+
+
+        public static string[] GetWeaknesSensorsArray(int length, Random rnd)
+        {
+            string[] weaknesSensors = new string[length];
+            for (int i = 0; i < length; i++)
+            {
+                weaknesSensors[i] = TypeOfSensors[rnd.Next(TypeOfSensors.Length)];
+            }
+            return weaknesSensors;
+        }
+        public static IranianAgent CreateAgentOfType(string type, Random rnd)
+        {
+            int length = 0;
+            switch (type)
+            {
+                case "Foot":
+                    length = 2;
+                    return new FootSoldier(type, GetWeaknesSensorsArray(length, rnd));
+                case "Squad":
+                    length = 4;
+                    return new SquadLeader(type, GetWeaknesSensorsArray(length, rnd));
+                case "Senior":
+                    length = 6;
+                    return new SeniorCommander(type, GetWeaknesSensorsArray(length, rnd));
+                case "Organization":
+                    length = 8;
+                    return new OrganizationLeader(type, GetWeaknesSensorsArray(length, rnd));
+            }
+            return new IranianAgent(type, GetWeaknesSensorsArray(length, rnd));
         }
     }
 }

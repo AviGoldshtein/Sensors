@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sensors.Entiteis.Sensors
 {
-    internal class Motion
+    internal class Motion : BaseSensor
     {
+        public Motion(string name) : base(name) { }
     }
 }

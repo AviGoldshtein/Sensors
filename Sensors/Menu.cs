@@ -16,8 +16,10 @@ namespace Sensors
             bool running = true;
             while (running)
             {
-                Console.WriteLine("\n1. to attahc a sensor to the man setting in the room\n" +
-                "2. to set an iranian on the chair\n");
+                Console.WriteLine("\n1. to attahc a sensor to the man seatting on the chair\n" +
+                "2. to place a random agent on the chair\n" +
+                "3. to start a new game\n" +
+                "1000. to exit the game\n");
                 string choice = Console.ReadLine();
 
                 switch (choice)
@@ -27,6 +29,14 @@ namespace Sensors
                         break;
                     case "2":
                         investigationManager.EnterAgentToTheRoom(IranianAigentFactory.CreateRandomAgent(rnd));
+                        break;
+                    case "3":
+                        running = false;
+                        InvestigationManager._singelInstance.StartInvestigation();
+                        break;
+                    case "1000":
+                        running = false;
+                        Console.WriteLine("have a good day");
                         break;
                     default:
                         Console.WriteLine("invalid input");

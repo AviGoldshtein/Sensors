@@ -47,12 +47,6 @@ namespace Sensors.Factorys
 
 
 
-
-
-
-
-
-
         public static string[] GetWeaknesSensorsArray(int length, Random rnd)
         {
             string[] weaknesSensors = new string[length];

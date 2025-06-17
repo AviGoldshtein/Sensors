@@ -1,4 +1,5 @@
 ﻿using Sensors.Entiteis.Sensors;
+using Sensors.Serveces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Sensors.Entiteis
 {
     internal abstract class BaseSensor
     {
-        public Random random = new Random();
+        public Random random = Rand._random;
         public string Name { get; private set; }
 
         public BaseSensor(string name)

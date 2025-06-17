@@ -9,5 +9,12 @@ namespace Sensors.Entiteis.Sensors
     internal class Thermal : BaseSensor
     {
         public Thermal(string name) : base(name) { }
+
+        public override void Act(IranianAgent iranian)
+        {
+            int length = iranian.RequeredTypeSensors.Length;
+            string SensorToReveal = iranian.RequeredTypeSensors[random.Next(length)];
+            Console.WriteLine($"{this.Name} sensor is revealung you a secret: one of the weaknes sensors is: {SensorToReveal}");
+        }
     }
 }

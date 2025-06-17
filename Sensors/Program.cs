@@ -13,7 +13,7 @@ namespace Sensors
     {
         static void Main(string[] args)
         {
-            InvestigationManager investigationManager = InvestigationManager._singelInstance;
+            InvestigationManager investigationManager = InvestigationManager._SingleInstance;
             investigationManager.StartInvestigation();
         }
     }

@@ -8,6 +8,17 @@ namespace Sensors.Entiteis.Sensors
 {
     internal class Motion : BaseSensor
     {
+        private int counterAttack = 0;
         public Motion(string name) : base(name) { }
+
+        public override void Act(IranianAgent iranian)
+        {
+            counterAttack++;
+            if (counterAttack >= 3)
+            {
+                Console.WriteLine($"{this.Name} is speaking: Sorry, I am broken. On the way to the garbage");
+                iranian.AttachedSensoesToRemove.Add(this);
+            }
+        }
     }
 }

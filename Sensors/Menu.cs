@@ -32,7 +32,7 @@ namespace Sensors
                         break;
                     case "3":
                         running = false;
-                        InvestigationManager._singelInstance.StartInvestigation();
+                        InvestigationManager._SingleInstance.StartInvestigation();
                         break;
                     case "1000":
                         running = false;

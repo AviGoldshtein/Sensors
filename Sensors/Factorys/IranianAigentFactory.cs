@@ -10,45 +10,28 @@ namespace Sensors.Factorys
 {
     internal static class IranianAigentFactory
     {
-        public static string[] Ranks = { "Foot", "Squad", "Senior", "Organization" };
+        //public static string[] Ranks = { "Foot", "Squad", "Senior", "Organization" };
         public static string[] TypeOfSensors = { "Audio", "Thermal", "Pulse", "Motion", "Magnetic", "Signal", "Light" };
 
-        public static IranianAgent CreateRandomAgent(Random rnd)
+        public static string[] GetWeaknesSensorsArray(string type, Random rnd)
         {
-            int capasity = 0;
-
-            string rank = Ranks[rnd.Next(Ranks.Length)];
-            switch (rank)
+            int length = 0;
+            switch (type)
             {
                 case "Foot":
-                    capasity = 2;
+                    length = 2;
                     break;
                 case "Squad":
-                    capasity = 4;
+                    length = 4;
                     break;
                 case "Senior":
-                    capasity = 6;
+                    length = 6;
                     break;
                 case "Organization":
-                    capasity = 8;
+                    length = 8;
                     break;
             }
-            string[] RequiredSensorTypes = new string[capasity];
 
-            for (int i = 0; i < capasity; i++)
-            {
-                RequiredSensorTypes[i] = TypeOfSensors[rnd.Next(TypeOfSensors.Length)];
-            }
-
-            IranianAgent agent = new IranianAgent(rank, RequiredSensorTypes);
-            return agent;
-        }
-
-
-
-
-        public static string[] GetWeaknesSensorsArray(int length, Random rnd)
-        {
             string[] weaknesSensors = new string[length];
             for (int i = 0; i < length; i++)
             {
@@ -58,23 +41,18 @@ namespace Sensors.Factorys
         }
         public static IranianAgent CreateAgentOfType(string type, Random rnd)
         {
-            int length = 0;
             switch (type)
             {
                 case "Foot":
-                    length = 2;
-                    return new FootSoldier(type, GetWeaknesSensorsArray(length, rnd));
+                    return new FootSoldier(type, GetWeaknesSensorsArray(type, rnd));
                 case "Squad":
-                    length = 4;
-                    return new SquadLeader(type, GetWeaknesSensorsArray(length, rnd));
+                    return new SquadLeader(type, GetWeaknesSensorsArray(type, rnd));
                 case "Senior":
-                    length = 6;
-                    return new SeniorCommander(type, GetWeaknesSensorsArray(length, rnd));
+                    return new SeniorCommander(type, GetWeaknesSensorsArray(type, rnd));
                 case "Organization":
-                    length = 8;
-                    return new OrganizationLeader(type, GetWeaknesSensorsArray(length, rnd));
+                    return new OrganizationLeader(type, GetWeaknesSensorsArray(type, rnd));
             }
-            return new IranianAgent(type, GetWeaknesSensorsArray(length, rnd));
+            return new FootSoldier(type, GetWeaknesSensorsArray(type, rnd));
         }
     }
 }

@@ -9,5 +9,9 @@ namespace Sensors.Entiteis.Sensors
     internal class Magnetic : BaseSensor
     {
         public Magnetic(string name) : base(name) { }
+        public override void Act(IranianAgent iranian)
+        {
+            iranian.DontAttack -= 6;
+        }
     }
 }

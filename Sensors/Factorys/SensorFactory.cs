@@ -10,8 +10,7 @@ namespace Sensors.Factorys
 {
     internal static class SensorFactory
     {
-        public static string[] TypeOfSensors = { "Audio", "Thermal", "Pulse", "Motion", "Magnetic", "Signal", "Light" };    //  not in use   //
-
+        public static string[] TypeOfSensors = { "Audio", "Thermal", "Pulse", "Motion", "Magnetic", "Signal", "Light" };    //  not in use
 
         public static BaseSensor CreateRandomSensor(Random rnd)   // not in use  //
         {

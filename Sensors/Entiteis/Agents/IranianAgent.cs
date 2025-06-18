@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Sensors.Entiteis
 {
-    internal class IranianAgent
+    internal abstract class IranianAgent
     {
+        public int DontAttack = 0;
         protected Random random = Rand._random;
         public string Type;
         public string Affiliation = "not implemented yet :-)";
@@ -37,10 +38,7 @@ namespace Sensors.Entiteis
         {
             AttachedSensors.Clear();
         }
-        public virtual void AttackBack()
-        {
-            MoveTheTurnForward();
-        }
+        public abstract void AttackBack();
         public void MoveTheTurnForward()
         {
             InvestigationManager._SingleInstance.AgentTurn++;

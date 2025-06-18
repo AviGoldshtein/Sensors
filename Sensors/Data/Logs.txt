@@ -1,0 +1,26 @@
+
+18/06/2025 19:28:51: investigation started
+18/06/2025 19:28:51: Foot agent entered the investigation room.
+18/06/2025 19:52:23: investigation started
+18/06/2025 19:52:23: Foot agent entered the investigation room.
+18/06/2025 19:52:33: The debugging prints has been turned off
+18/06/2025 19:53:05: Squad agent entered the investigation room.
+18/06/2025 19:56:10: investigation started
+18/06/2025 19:56:10: Foot agent entered the investigation room.
+18/06/2025 19:56:15: The debugging prints has been turned off
+18/06/2025 19:56:45: Squad agent entered the investigation room.
+18/06/2025 19:56:45: Foot agent has been exposed!
+18/06/2025 19:57:08: Senior agent entered the investigation room.
+18/06/2025 19:57:08: Squad agent has been exposed!
+18/06/2025 19:58:18: Organization agent entered the investigation room.
+18/06/2025 19:58:18: Senior agent has been exposed!
+18/06/2025 19:59:00: Organization agent entered the investigation room.
+18/06/2025 19:59:00: Organization agent has been exposed!
+18/06/2025 19:59:34: The limit time for every turn has been changed to 5 seconds.
+18/06/2025 20:02:18: investigation started
+18/06/2025 20:02:18: Foot agent entered the investigation room.
+18/06/2025 20:02:28: The debugging prints has been turned off
+18/06/2025 20:02:44: Foot agent entered the waiting room.
+18/06/2025 20:02:44: Foot agent entered the investigation room.
+18/06/2025 20:02:51: Foot agent entered the waiting room.
+18/06/2025 20:02:53: The game has stopped

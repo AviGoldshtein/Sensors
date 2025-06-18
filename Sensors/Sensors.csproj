@@ -120,6 +120,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serveces\Debuger.cs" />
+    <Compile Include="Serveces\FillLoger.cs" />
     <Compile Include="Serveces\Rand.cs" />
     <Compile Include="Serveces\TimeCalculator.cs" />
   </ItemGroup>

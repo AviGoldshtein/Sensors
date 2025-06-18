@@ -40,7 +40,8 @@ namespace Sensors
                         break;
                     case "3":
                         Debuger._debug = Debuger._debug ? false : true;
-                        Console.WriteLine($"the debugging prints has been turned {onOrOff}");
+                        Console.WriteLine($"The debugging prints has been turned {onOrOff}");
+                        FillLoger.Log($"The debugging prints has been turned {onOrOff}");
                         break;
                     case "4":
                         InvestigationManager._SingleInstance.ChangeTheTimeLimit();
@@ -52,6 +53,7 @@ namespace Sensors
                         InvestigationManager._SingleInstance.SwapAgentsBetweenChairAndRoom();
                         break;
                     case "1000":
+                        FillLoger.Log("The game has stopped");
                         running = false;
                         Console.WriteLine("have a good day");
                         break;

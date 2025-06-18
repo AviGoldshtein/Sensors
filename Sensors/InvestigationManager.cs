@@ -28,6 +28,7 @@ namespace Sensors
 
         public void StartInvestigation(bool debug = false)
         {
+            FillLoger.Log("investigation started");
             if (debug) Debuger._debug = true;
 
             UserTurn = 0;
@@ -63,6 +64,7 @@ namespace Sensors
         }
         public void EnterNewAgentToRoom(IranianAgent agent)
         {
+            FillLoger.Log($"{agent.Type} agent entered the investigation room.");
             AgentTurn = 0;
             AgentId = -1;
             string RoomStatusMessage = this.AgentOnTheChair == null ? "entered an" : "changed the";
@@ -108,6 +110,7 @@ namespace Sensors
                 {
                     this.TimeLimit = seconds;
                     Console.WriteLine($"you set the time limit to {seconds} seconds.");
+                    FillLoger.Log($"The limit time for every turn has been changed to {seconds} seconds.");
                 }
                 else
                 {
@@ -133,6 +136,7 @@ namespace Sensors
                 AgentInWaitingRoom = AgentOnTheChair;
                 AgentTurnInTheRoom = AgentTurn;
                 AgentIdInTheRoom = AgentId;
+                FillLoger.Log($"{AgentInWaitingRoom.Type} agent entered the waiting room.");
             }
             else
             {

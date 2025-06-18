@@ -14,11 +14,17 @@ namespace Sensors
         public static readonly InvestigationManager _SingleInstance = new InvestigationManager();
 
         public int UserTurn;
-        public int AgentTurn;
-        public int AgentId;
         public int TimeLimit = 5;
 
-        public IranianAgent IranianOnTheChair;
+        // the agent you play with
+        public IranianAgent AgentOnTheChair;
+        public int AgentTurn;
+        public int AgentId;
+
+        // the agent in waiting room (optional)
+        public IranianAgent AgentInWaitingRoom;
+        public int AgentTurnInTheRoom;
+        public int AgentIdInTheRoom;
 
         public void StartInvestigation(bool debug = false)
         {
@@ -26,7 +32,7 @@ namespace Sensors
 
             UserTurn = 0;
             AgentTurn = 0;
-            EnterAgentToTheRoom(IranianAigentFactory.CreateAgentOfType("Foot", Rand._random));
+            EnterNewAgentToRoom(IranianAigentFactory.CreateAgentOfType("Foot", Rand._random));
             Menu.ShowMenu(this);
         }
         public void AtechSensorToManOnTheChair()
@@ -41,13 +47,13 @@ namespace Sensors
 
             if (TimeCalculator.IsTheTimeThatPassedOkay(this.TimeLimit, startingPoint, endingPoint))
             {
-                if (IranianOnTheChair == null)
+                if (AgentOnTheChair == null)
                 {
                     Console.WriteLine("the room is empty, enter someone first");
                 }
                 else
                 {
-                    IranianOnTheChair.AttachSensor(sensor);
+                    AgentOnTheChair.AttachSensor(sensor);
                 }
             }
             else
@@ -55,14 +61,14 @@ namespace Sensors
                 Console.WriteLine("hey bro, to much time. try another time");
             }
         }
-        public void EnterAgentToTheRoom(IranianAgent agent)
+        public void EnterNewAgentToRoom(IranianAgent agent)
         {
             AgentTurn = 0;
             AgentId = -1;
-            string RoomStatusMessage = this.IranianOnTheChair == null ? "entered an" : "changed the";
-            this.IranianOnTheChair = agent;
+            string RoomStatusMessage = this.AgentOnTheChair == null ? "entered an" : "changed the";
+            this.AgentOnTheChair = agent;
 
-            if (this.IranianOnTheChair != null)
+            if (this.AgentOnTheChair != null)
             {
                 Console.WriteLine($"you have {RoomStatusMessage} agent in the room!");
             }
@@ -90,7 +96,7 @@ namespace Sensors
                     TypeForNextLevel = "Organization";
                     break;
             }
-            EnterAgentToTheRoom(IranianAigentFactory.CreateAgentOfType(TypeForNextLevel, Rand._random));
+            EnterNewAgentToRoom(IranianAigentFactory.CreateAgentOfType(TypeForNextLevel, Rand._random));
         }
         public void ChangeTheTimeLimit()
         {
@@ -113,6 +119,52 @@ namespace Sensors
             {
                 Console.WriteLine("enter only numbers");
                 ChangeTheTimeLimit();
+            }
+        }
+        public void SwapCurrentAgentWithNew()
+        {
+            MoveAgentToWaitingRoom();
+            EnterNewAgentToRoom(IranianAigentFactory.CreateAgentOfType("Foot", Rand._random));
+        }
+        public void MoveAgentToWaitingRoom()
+        {
+            if (AgentOnTheChair != null)
+            {
+                AgentInWaitingRoom = AgentOnTheChair;
+                AgentTurnInTheRoom = AgentTurn;
+                AgentIdInTheRoom = AgentId;
+            }
+            else
+            {
+                Console.WriteLine("There is no one on the chair");
+            }
+        }
+        public void SwapAgentsBetweenChairAndRoom()
+        {
+            if (AgentOnTheChair != null)
+            {
+                if (AgentInWaitingRoom != null)
+                {
+                    IranianAgent tempCair = AgentInWaitingRoom;
+                    int tempTurn = AgentTurnInTheRoom;
+                    int tempId = AgentIdInTheRoom;
+
+                    MoveAgentToWaitingRoom();
+
+                    AgentOnTheChair = tempCair;
+                    AgentTurn = tempTurn;
+                    AgentId = tempId;
+
+                    Console.WriteLine("The two agents switched.");
+                }
+                else
+                {
+                    Console.WriteLine("There is no one in the waiting room.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("There is no one on the chair.");
             }
         }
     }

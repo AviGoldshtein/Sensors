@@ -1,4 +1,5 @@
-﻿using Sensors.Entiteis;
+﻿using Sensors.Data;
+using Sensors.Entiteis;
 using Sensors.Entiteis.Sensors;
 using Sensors.Factorys;
 using Sensors.Serveces;
@@ -15,7 +16,7 @@ namespace Sensors
         static void Main(string[] args)
         {
             InvestigationManager investigationManager = InvestigationManager._SingleInstance;
-            investigationManager.StartInvestigation(debug:true);
+            investigationManager.StartInvestigation(debug: true);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Sensors.Serveces;
+﻿using Sensors.Data;
+using Sensors.Serveces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace Sensors.Entiteis
 
         public void AttachSensor(BaseSensor sensor)
         {
+            //DalManager.attachSensorToAgent(this, InvestigationManager._SingleInstance.AgentId, sensor);    // turn on only if sql server is on
             AttachedSensors.Add(sensor);
             sensor.Activate(this);
         }

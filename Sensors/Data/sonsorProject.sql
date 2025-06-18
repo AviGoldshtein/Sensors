@@ -1,0 +1,21 @@
+CREATE DATABASE IF NOT EXISTS sensor_projectDB;
+USE sensor_projectDB;
+
+
+CREATE TABLE IF NOT EXISTS `sensors` (
+  `id` INT(11) PRIMARY KEY AUTO_INCREMENT,
+  `name` VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS `agents` (
+  `id` INT(11) PRIMARY KEY AUTO_INCREMENT,
+  `type` VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS `ConnectionJunction` (
+  `id` INT(11) PRIMARY KEY AUTO_INCREMENT,
+  `sensor_id` INT,
+  `agent_id` INT,
+  FOREIGN KEY (`sensor_id`) REFERENCES `sensors`(`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`agent_id`) REFERENCES `agents`(`id`) ON DELETE CASCADE
+);

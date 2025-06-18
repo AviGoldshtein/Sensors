@@ -1,4 +1,5 @@
 ﻿using Sensors.Entiteis;
+using Sensors.Serveces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,11 @@ namespace Sensors.Data
             {
                 agentId = dalAgents.InsertAgent(agent);
                 InvestigationManager._SingleInstance.AgentId = agentId;
+                FillLoger.Log($"A new agent has been entered into the database ({agent.Type})");
             }
 
             int sensorId = dalSensors.InsertSensor(sensor);
+            FillLoger.Log($"A new sensor has been entered into the database ({sensor.Name})");
             dalConnectionJunction.InsertConnJanction(sensorId, agentId);
         }
     }

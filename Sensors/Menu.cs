@@ -23,6 +23,9 @@ namespace Sensors
                 Console.WriteLine("\n1. to attahc a sensor to the man seatting on the chair\n" +
                 "2. to start a new game\n" +
                 $"3. to turn {onOrOff} the debugging prints\n" +
+                $"4. to change the time limit for every turn\n" +
+                $"5. to move the agent into the waiting room, and replase him with a new\n" +
+                $"6. to swap agents between chair and room\n" +
                 "1000. to exit the game\n");
                 string choice = Console.ReadLine();
 
@@ -37,9 +40,20 @@ namespace Sensors
                         break;
                     case "3":
                         Debuger._debug = Debuger._debug ? false : true;
-                        Console.WriteLine($"the debugging prints has been turned {onOrOff}");
+                        Console.WriteLine($"The debugging prints has been turned {onOrOff}");
+                        FillLoger.Log($"The debugging prints has been turned {onOrOff}");
+                        break;
+                    case "4":
+                        InvestigationManager._SingleInstance.ChangeTheTimeLimit();
+                        break;
+                    case "5":
+                        InvestigationManager._SingleInstance.SwapCurrentAgentWithNew();
+                        break;
+                    case "6":
+                        InvestigationManager._SingleInstance.SwapAgentsBetweenChairAndRoom();
                         break;
                     case "1000":
+                        FillLoger.Log("The game has stopped");
                         running = false;
                         Console.WriteLine("have a good day");
                         break;

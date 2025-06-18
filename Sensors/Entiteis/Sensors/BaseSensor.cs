@@ -69,6 +69,7 @@ namespace Sensors.Entiteis
             {
                 Console.WriteLine("\ncongragulations!!!\nthe agent is exposed\nyou are ready for the next level!\n\n");
                 InvestigationManager._SingleInstance.MoveToTheNextLevel(iranian);
+                FillLoger.Log($"{iranian.Type} agent has been exposed!");
             }
             else
             {

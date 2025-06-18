@@ -14,43 +14,63 @@ namespace Sensors
         public static readonly InvestigationManager _SingleInstance = new InvestigationManager();
 
         public int UserTurn;
+        public int TimeLimit = 5;
+
+        // the agent you play with
+        public IranianAgent AgentOnTheChair;
         public int AgentTurn;
         public int AgentId;
 
-        public IranianAgent IranianOnTheChair;
+        // the agent in waiting room (optional)
+        public IranianAgent AgentInWaitingRoom;
+        public int AgentTurnInTheRoom;
+        public int AgentIdInTheRoom;
 
         public void StartInvestigation(bool debug = false)
         {
+            FillLoger.Log("investigation started");
             if (debug) Debuger._debug = true;
 
             UserTurn = 0;
             AgentTurn = 0;
-            EnterAgentToTheRoom(IranianAigentFactory.CreateAgentOfType("Foot", Rand._random));
+            EnterNewAgentToRoom(IranianAigentFactory.CreateAgentOfType("Foot", Rand._random));
             Menu.ShowMenu(this);
         }
         public void AtechSensorToManOnTheChair()
         {
             UserTurn++;
-            Console.WriteLine($"your turn is: {UserTurn}");
+            Console.WriteLine($"your turn is: {UserTurn}.");
+            Console.WriteLine($"you have {this.TimeLimit} seconds to decide.");
+            DateTime startingPoint = DateTime.Now;
 
             BaseSensor sensor = SensorFactory.CreateSensorByType(Menu.GetChoiceSensor());
-            if (IranianOnTheChair == null)
+            DateTime endingPoint = DateTime.Now;
+
+            if (TimeCalculator.IsTheTimeThatPassedOkay(this.TimeLimit, startingPoint, endingPoint))
             {
-                Console.WriteLine("the room is empty, enter someone first");
+                if (AgentOnTheChair == null)
+                {
+                    Console.WriteLine("the room is empty, enter someone first");
+                }
+                else
+                {
+                    AgentOnTheChair.AttachSensor(sensor);
+                }
             }
             else
             {
-                IranianOnTheChair.AttachSensor(sensor);
+                Console.WriteLine("hey bro, to much time. try another time");
             }
         }
-        public void EnterAgentToTheRoom(IranianAgent agent)
+        public void EnterNewAgentToRoom(IranianAgent agent)
         {
+            FillLoger.Log($"{agent.Type} agent entered the investigation room.");
             AgentTurn = 0;
             AgentId = -1;
-            string RoomStatusMessage = this.IranianOnTheChair == null ? "entered an" : "changed the";
-            this.IranianOnTheChair = agent;
+            string RoomStatusMessage = this.AgentOnTheChair == null ? "entered an" : "changed the";
+            this.AgentOnTheChair = agent;
 
-            if (this.IranianOnTheChair != null)
+            if (this.AgentOnTheChair != null)
             {
                 Console.WriteLine($"you have {RoomStatusMessage} agent in the room!");
             }
@@ -78,7 +98,78 @@ namespace Sensors
                     TypeForNextLevel = "Organization";
                     break;
             }
-            EnterAgentToTheRoom(IranianAigentFactory.CreateAgentOfType(TypeForNextLevel, Rand._random));
+            EnterNewAgentToRoom(IranianAigentFactory.CreateAgentOfType(TypeForNextLevel, Rand._random));
+        }
+        public void ChangeTheTimeLimit()
+        {
+            Console.WriteLine("Enter the number of seconds you want (2 - 8)");
+            string choice = Console.ReadLine();
+            if (int.TryParse(choice, out int seconds))
+            {
+                if (seconds <= 8 && seconds >= 2)
+                {
+                    this.TimeLimit = seconds;
+                    Console.WriteLine($"you set the time limit to {seconds} seconds.");
+                    FillLoger.Log($"The limit time for every turn has been changed to {seconds} seconds.");
+                }
+                else
+                {
+                    Console.WriteLine("only numbers between (2 - 8)");
+                    ChangeTheTimeLimit();
+                }
+            }
+            else
+            {
+                Console.WriteLine("enter only numbers");
+                ChangeTheTimeLimit();
+            }
+        }
+        public void SwapCurrentAgentWithNew()
+        {
+            MoveAgentToWaitingRoom();
+            EnterNewAgentToRoom(IranianAigentFactory.CreateAgentOfType("Foot", Rand._random));
+        }
+        public void MoveAgentToWaitingRoom()
+        {
+            if (AgentOnTheChair != null)
+            {
+                AgentInWaitingRoom = AgentOnTheChair;
+                AgentTurnInTheRoom = AgentTurn;
+                AgentIdInTheRoom = AgentId;
+                FillLoger.Log($"{AgentInWaitingRoom.Type} agent entered the waiting room.");
+            }
+            else
+            {
+                Console.WriteLine("There is no one on the chair");
+            }
+        }
+        public void SwapAgentsBetweenChairAndRoom()
+        {
+            if (AgentOnTheChair != null)
+            {
+                if (AgentInWaitingRoom != null)
+                {
+                    IranianAgent tempCair = AgentInWaitingRoom;
+                    int tempTurn = AgentTurnInTheRoom;
+                    int tempId = AgentIdInTheRoom;
+
+                    MoveAgentToWaitingRoom();
+
+                    AgentOnTheChair = tempCair;
+                    AgentTurn = tempTurn;
+                    AgentId = tempId;
+
+                    Console.WriteLine("The two agents switched.");
+                }
+                else
+                {
+                    Console.WriteLine("There is no one in the waiting room.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("There is no one on the chair.");
+            }
         }
     }
 }

@@ -13,11 +13,9 @@ namespace Sensors
     {
         public static readonly InvestigationManager _SingleInstance = new InvestigationManager();
 
-        //private List<IranianAgent> PrisonCell = new List<IranianAgent>();
-        //public bool IsExsposed;    // still not in use
-
         public int UserTurn;
         public int AgentTurn;
+        public int AgentId;
 
         public IranianAgent IranianOnTheChair;
 
@@ -48,6 +46,7 @@ namespace Sensors
         public void EnterAgentToTheRoom(IranianAgent agent)
         {
             AgentTurn = 0;
+            AgentId = -1;
             string RoomStatusMessage = this.IranianOnTheChair == null ? "entered an" : "changed the";
             this.IranianOnTheChair = agent;
 

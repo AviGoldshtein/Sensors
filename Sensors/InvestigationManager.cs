@@ -28,7 +28,7 @@ namespace Sensors
             UserTurn = 0;
             AgentTurn = 0;
             EnterAgentToTheRoom(IranianAigentFactory.CreateAgentOfType("Foot", Rand._random));
-            Menu.ShowMenu(Rand._random, this);
+            Menu.ShowMenu(this);
         }
         public void AtechSensorToManOnTheChair()
         {

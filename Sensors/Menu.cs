@@ -12,7 +12,7 @@ namespace Sensors
 {
     internal static class Menu
     {
-        public static void ShowMenu(Random rnd, InvestigationManager investigationManager)
+        public static void ShowMenu(InvestigationManager investigationManager)
         {
             string onOrOff;
             bool running = true;
@@ -21,9 +21,8 @@ namespace Sensors
                 onOrOff = Debuger._debug ? "off" : "on";
 
                 Console.WriteLine("\n1. to attahc a sensor to the man seatting on the chair\n" +
-                "2. to place a random agent on the chair\n" +
-                "3. to start a new game\n" +
-                $"4. to turn {onOrOff} the debugging prints\n" +
+                "2. to start a new game\n" +
+                $"3. to turn {onOrOff} the debugging prints\n" +
                 "1000. to exit the game\n");
                 string choice = Console.ReadLine();
 
@@ -33,13 +32,10 @@ namespace Sensors
                         investigationManager.AtechSensorToManOnTheChair();
                         break;
                     case "2":
-                        investigationManager.EnterAgentToTheRoom(IranianAigentFactory.CreateRandomAgent(rnd));
-                        break;
-                    case "3":
                         running = false;
                         InvestigationManager._SingleInstance.StartInvestigation(debug:Debuger._debug);
                         break;
-                    case "4":
+                    case "3":
                         Debuger._debug = Debuger._debug ? false : true;
                         Console.WriteLine($"the debugging prints has been turned {onOrOff}");
                         break;

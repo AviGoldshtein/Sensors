@@ -22,7 +22,7 @@ namespace Sensors.Entiteis
         {
             bool allExposed = true;
             int counterExposedSensors = 0;
-            Console.WriteLine(iranian);    // print for debugging
+            Debuger.LogDebugMessage(iranian.ToString());
 
             bool nothingMatched;
             List<BaseSensor> tempStorege = new List<BaseSensor>();
@@ -42,14 +42,14 @@ namespace Sensors.Entiteis
                         nothingMatched = false;
                         tempStorege.Add(sensor);
                         iranian.GetAttachedSensors().Remove(sensor);
-                        Console.WriteLine("something matched");       // for debugging
+                        Debuger.LogDebugMessage("something matched");
                         counterExposedSensors++;
                         break;
                     }
                 }
                 if (nothingMatched)
                 {
-                    Console.WriteLine("somthing is missing in order to expose the agent");   //   for debugging
+                    Debuger.LogDebugMessage("somthing is missing in order to expose the agent");
                     allExposed = false;
                 }
             }

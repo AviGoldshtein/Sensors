@@ -44,7 +44,7 @@ namespace Sensors.Entiteis
         public void MoveTheTurnForward()
         {
             InvestigationManager._SingleInstance.AgentTurn++;
-            Console.WriteLine($"{this.Type} is speakink: my turn number: {InvestigationManager._SingleInstance.AgentTurn}");
+            Debuger.LogDebugMessage($"{this.Type} is speakink: my turn number: {InvestigationManager._SingleInstance.AgentTurn}");
         }
         public override string ToString()
         {

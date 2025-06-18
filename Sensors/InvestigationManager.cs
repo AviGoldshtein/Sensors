@@ -16,6 +16,7 @@ namespace Sensors
         public int UserTurn;
         public int AgentTurn;
         public int AgentId;
+        public int TimeLimit = 5;
 
         public IranianAgent IranianOnTheChair;
 
@@ -31,16 +32,27 @@ namespace Sensors
         public void AtechSensorToManOnTheChair()
         {
             UserTurn++;
-            Console.WriteLine($"your turn is: {UserTurn}");
+            Console.WriteLine($"your turn is: {UserTurn}.");
+            Console.WriteLine($"you have {this.TimeLimit} seconds to decide.");
+            DateTime startingPoint = DateTime.Now;
 
             BaseSensor sensor = SensorFactory.CreateSensorByType(Menu.GetChoiceSensor());
-            if (IranianOnTheChair == null)
+            DateTime endingPoint = DateTime.Now;
+
+            if (TimeCalculator.IsTheTimeThatPassedOkay(this.TimeLimit, startingPoint, endingPoint))
             {
-                Console.WriteLine("the room is empty, enter someone first");
+                if (IranianOnTheChair == null)
+                {
+                    Console.WriteLine("the room is empty, enter someone first");
+                }
+                else
+                {
+                    IranianOnTheChair.AttachSensor(sensor);
+                }
             }
             else
             {
-                IranianOnTheChair.AttachSensor(sensor);
+                Console.WriteLine("hey bro, to much time. try another time");
             }
         }
         public void EnterAgentToTheRoom(IranianAgent agent)
@@ -79,6 +91,29 @@ namespace Sensors
                     break;
             }
             EnterAgentToTheRoom(IranianAigentFactory.CreateAgentOfType(TypeForNextLevel, Rand._random));
+        }
+        public void ChangeTheTimeLimit()
+        {
+            Console.WriteLine("Enter the number of seconds you want (2 - 8)");
+            string choice = Console.ReadLine();
+            if (int.TryParse(choice, out int seconds))
+            {
+                if (seconds <= 8 && seconds >= 2)
+                {
+                    this.TimeLimit = seconds;
+                    Console.WriteLine($"you set the time limit to {seconds} seconds.");
+                }
+                else
+                {
+                    Console.WriteLine("only numbers between (2 - 8)");
+                    ChangeTheTimeLimit();
+                }
+            }
+            else
+            {
+                Console.WriteLine("enter only numbers");
+                ChangeTheTimeLimit();
+            }
         }
     }
 }

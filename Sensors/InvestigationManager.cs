@@ -21,8 +21,10 @@ namespace Sensors
 
         public IranianAgent IranianOnTheChair;
 
-        public void StartInvestigation()
+        public void StartInvestigation(bool debug = false)
         {
+            if (debug) Debuger._debug = true;
+
             UserTurn = 0;
             AgentTurn = 0;
             EnterAgentToTheRoom(IranianAigentFactory.CreateAgentOfType("Foot", Rand._random));

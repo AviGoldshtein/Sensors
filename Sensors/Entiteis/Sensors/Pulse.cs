@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sensors.Serveces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace Sensors.Entiteis.Sensors
             counterAttack++;
             if (counterAttack >= 3)
             {
-                Console.WriteLine($"{this.Name} is speaking: Sorry, I am broken. On the way to the garbage");
+                Debuger.LogDebugMessage($"{this.Name} is speaking: Sorry, I am broken. On the way to the garbage");
                 iranian.AttachedSensoesToRemove.Add(this);
             }
         }

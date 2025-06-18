@@ -1,5 +1,6 @@
 ﻿using Sensors.Entiteis;
 using Sensors.Factorys;
+using Sensors.Serveces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,16 @@ namespace Sensors
     {
         public static void ShowMenu(Random rnd, InvestigationManager investigationManager)
         {
+            string onOrOff;
             bool running = true;
             while (running)
             {
+                onOrOff = Debuger._debug ? "off" : "on";
+
                 Console.WriteLine("\n1. to attahc a sensor to the man seatting on the chair\n" +
                 "2. to place a random agent on the chair\n" +
                 "3. to start a new game\n" +
+                $"4. to turn {onOrOff} the debugging prints\n" +
                 "1000. to exit the game\n");
                 string choice = Console.ReadLine();
 
@@ -32,7 +37,11 @@ namespace Sensors
                         break;
                     case "3":
                         running = false;
-                        InvestigationManager._SingleInstance.StartInvestigation();
+                        InvestigationManager._SingleInstance.StartInvestigation(debug:Debuger._debug);
+                        break;
+                    case "4":
+                        Debuger._debug = Debuger._debug ? false : true;
+                        Console.WriteLine($"the debugging prints has been turned {onOrOff}");
                         break;
                     case "1000":
                         running = false;

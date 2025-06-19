@@ -33,11 +33,11 @@ namespace Sensors.Data
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine($"my sql exeption {ex.Message}");
+                Printer.LogError($"my sql exeption {ex.Message}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"exeption: {ex.Message}");
+                Printer.LogError($"exeption: {ex.Message}");
             }
             dbConnection.CloseConnection();
         }

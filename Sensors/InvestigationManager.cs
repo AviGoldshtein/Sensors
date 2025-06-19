@@ -28,7 +28,8 @@ namespace Sensors
 
         public void StartInvestigation(bool debug = false)
         {
-            FillLoger.Log("investigation started");
+            FillLoger.Log("A new investigation started");
+            Printer.LogNote("A new investigation started");
             if (debug) Debuger._debug = true;
 
             UserTurn = 0;
@@ -39,8 +40,8 @@ namespace Sensors
         public void AtechSensorToManOnTheChair()
         {
             UserTurn++;
-            Console.WriteLine($"your turn is: {UserTurn}.");
-            Console.WriteLine($"you have {this.TimeLimit} seconds to decide.");
+            Printer.LogNote($"your turn is: {UserTurn}.");
+            Printer.LogWarnning($"you have {this.TimeLimit} seconds to decide.");
             DateTime startingPoint = DateTime.Now;
 
             BaseSensor sensor = SensorFactory.CreateSensorByType(Menu.GetChoiceSensor());
@@ -50,7 +51,7 @@ namespace Sensors
             {
                 if (AgentOnTheChair == null)
                 {
-                    Console.WriteLine("the room is empty, enter someone first");
+                    Printer.LogError("the room is empty, enter someone first");
                 }
                 else
                 {
@@ -59,7 +60,7 @@ namespace Sensors
             }
             else
             {
-                Console.WriteLine("hey bro, to much time. try another time");
+                Printer.LogError("hey bro, to much time. try another time");
             }
         }
         public void EnterNewAgentToRoom(IranianAgent agent)
@@ -72,11 +73,11 @@ namespace Sensors
 
             if (this.AgentOnTheChair != null)
             {
-                Console.WriteLine($"you have {RoomStatusMessage} agent in the room!");
+                Printer.LogNote($"you have {RoomStatusMessage} agent in the room!");
             }
             else
             {
-                Console.WriteLine("for some reason the room is steel empty");
+                Printer.LogNote("for some reason the room is steel empty");
             }
         }
         public void MoveToTheNextLevel(IranianAgent PreviousAgent)
@@ -102,25 +103,25 @@ namespace Sensors
         }
         public void ChangeTheTimeLimit()
         {
-            Console.WriteLine("Enter the number of seconds you want (2 - 8)");
+            Printer.LogNote("Enter the number of seconds you want (2 - 8)");
             string choice = Console.ReadLine();
             if (int.TryParse(choice, out int seconds))
             {
                 if (seconds <= 8 && seconds >= 2)
                 {
                     this.TimeLimit = seconds;
-                    Console.WriteLine($"you set the time limit to {seconds} seconds.");
+                    Printer.LogNote($"you set the time limit to {seconds} seconds.");
                     FillLoger.Log($"The limit time for every turn has been changed to {seconds} seconds.");
                 }
                 else
                 {
-                    Console.WriteLine("only numbers between (2 - 8)");
+                    Printer.LogError("only numbers between (2 - 8)");
                     ChangeTheTimeLimit();
                 }
             }
             else
             {
-                Console.WriteLine("enter only numbers");
+                Printer.LogError("enter only numbers");
                 ChangeTheTimeLimit();
             }
         }
@@ -140,7 +141,7 @@ namespace Sensors
             }
             else
             {
-                Console.WriteLine("There is no one on the chair");
+                Printer.LogWarnning("There is no one on the chair");
             }
         }
         public void SwapAgentsBetweenChairAndRoom()
@@ -159,16 +160,16 @@ namespace Sensors
                     AgentTurn = tempTurn;
                     AgentId = tempId;
 
-                    Console.WriteLine("The two agents switched.");
+                    Printer.LogNote("The two agents switched.");
                 }
                 else
                 {
-                    Console.WriteLine("There is no one in the waiting room.");
+                    Printer.LogWarnning("There is no one in the waiting room.");
                 }
             }
             else
             {
-                Console.WriteLine("There is no one on the chair.");
+                Printer.LogError("There is no one on the chair.");
             }
         }
     }

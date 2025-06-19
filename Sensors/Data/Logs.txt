@@ -24,3 +24,65 @@
 18/06/2025 20:02:44: Foot agent entered the investigation room.
 18/06/2025 20:02:51: Foot agent entered the waiting room.
 18/06/2025 20:02:53: The game has stopped
+19/06/2025 10:47:39: investigation started
+19/06/2025 10:47:39: Foot agent entered the investigation room.
+19/06/2025 10:47:49: investigation started
+19/06/2025 10:47:49: Foot agent entered the investigation room.
+19/06/2025 10:52:01: investigation started
+19/06/2025 10:52:01: Foot agent entered the investigation room.
+19/06/2025 10:52:29: investigation started
+19/06/2025 10:52:29: Foot agent entered the investigation room.
+19/06/2025 10:52:39: Foot agent entered the waiting room.
+19/06/2025 10:52:39: Foot agent entered the investigation room.
+19/06/2025 10:52:54: investigation started
+19/06/2025 10:52:54: Foot agent entered the investigation room.
+19/06/2025 10:54:10: a new investigation started
+19/06/2025 10:54:10: Foot agent entered the investigation room.
+19/06/2025 10:54:19: Foot agent entered the waiting room.
+19/06/2025 10:54:19: Foot agent entered the investigation room.
+19/06/2025 10:54:22: a new investigation started
+19/06/2025 10:54:22: Foot agent entered the investigation room.
+19/06/2025 10:54:27: The game has stopped
+19/06/2025 10:56:31: a new investigation started
+19/06/2025 10:56:31: Foot agent entered the investigation room.
+19/06/2025 10:58:14: a new investigation started
+19/06/2025 10:58:14: Foot agent entered the investigation room.
+19/06/2025 10:58:39: a new investigation started
+19/06/2025 10:58:39: Foot agent entered the investigation room.
+19/06/2025 11:00:29: a new investigation started
+19/06/2025 11:00:29: Foot agent entered the investigation room.
+19/06/2025 11:01:05: a new investigation started
+19/06/2025 11:01:05: Foot agent entered the investigation room.
+19/06/2025 11:01:19: a new investigation started
+19/06/2025 11:01:19: Foot agent entered the investigation room.
+19/06/2025 11:02:23: a new investigation started
+19/06/2025 11:02:23: Foot agent entered the investigation room.
+19/06/2025 11:05:27: a new investigation started
+19/06/2025 11:05:27: Foot agent entered the investigation room.
+19/06/2025 11:06:11: a new investigation started
+19/06/2025 11:06:11: Foot agent entered the investigation room.
+19/06/2025 11:06:52: a new investigation started
+19/06/2025 11:06:52: Foot agent entered the investigation room.
+19/06/2025 11:06:55: a new investigation started
+19/06/2025 11:06:55: Foot agent entered the investigation room.
+19/06/2025 11:28:04: A new investigation started
+19/06/2025 11:28:04: Foot agent entered the investigation room.
+19/06/2025 11:29:17: A new investigation started
+19/06/2025 11:29:17: Foot agent entered the investigation room.
+19/06/2025 11:30:23: A new investigation started
+19/06/2025 11:30:23: Foot agent entered the investigation room.
+19/06/2025 11:30:43: A new investigation started
+19/06/2025 11:30:43: Foot agent entered the investigation room.
+19/06/2025 11:31:10: A new investigation started
+19/06/2025 11:31:10: Foot agent entered the investigation room.
+19/06/2025 11:31:24: The debugging prints has been turned off
+19/06/2025 11:31:59: The debugging prints has been turned on
+19/06/2025 11:32:04: The debugging prints has been turned off
+19/06/2025 11:32:30: The limit time for every turn has been changed to 8 seconds.
+19/06/2025 11:32:55: Foot agent entered the waiting room.
+19/06/2025 11:32:55: Foot agent entered the investigation room.
+19/06/2025 11:32:59: Foot agent entered the waiting room.
+19/06/2025 11:33:05: Foot agent entered the waiting room.
+19/06/2025 11:33:11: A new investigation started
+19/06/2025 11:33:11: Foot agent entered the investigation room.
+19/06/2025 11:33:21: The game has stopped

@@ -34,11 +34,11 @@ namespace Sensors.Data
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine($"my sql exception: {ex.Message}");
+                Printer.LogError($"my sql exception: {ex.Message}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"exception: {ex.Message}");
+                Printer.LogError($"exception: {ex.Message}");
             }
             dbConnection.CloseConnection();
             return allAgents;
@@ -62,11 +62,11 @@ namespace Sensors.Data
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine($"my sql exeption {ex.Message}");
+                Printer.LogError($"my sql exeption {ex.Message}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"exeption: {ex.Message}");
+                Printer.LogError($"exeption: {ex.Message}");
             }
             dbConnection.CloseConnection();
             return newId;

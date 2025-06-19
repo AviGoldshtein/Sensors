@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sensors.Serveces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace Sensors.Entiteis.Sensors
         {
             int length = iranian.RequeredTypeSensors.Length;
             string SensorToReveal = iranian.RequeredTypeSensors[random.Next(length)];
-            Console.WriteLine($"{this.Name} sensor is revealung you a secret: one of the weaknes sensors is: {SensorToReveal}");
+            Printer.LogSecret($"{this.Name} sensor is revealung you a secret: one of the weaknes sensors is: {SensorToReveal}");
         }
     }
 }

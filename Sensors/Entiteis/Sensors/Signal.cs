@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sensors.Serveces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Sensors.Entiteis.Sensors
         public Signal(string name) : base(name) { }
         public override void Act(IranianAgent iranian)
         {
-            Console.WriteLine($"{this.Name} sensor is revealung you a secret: the rank of the solder is: {iranian.Type}");
+            Printer.LogSecret($"{this.Name} sensor is revealung you a secret: the rank of the solder is: {iranian.Type}");
         }
     }
 }

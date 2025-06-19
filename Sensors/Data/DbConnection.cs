@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Sensors.Serveces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Sensors.Data
             if (_conn.State != System.Data.ConnectionState.Open)
             {
                 _conn.Open();
-                Console.WriteLine("connected..");
+                Printer.LogNote("connected..");
             }
             return _conn;
         }

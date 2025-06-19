@@ -20,7 +20,7 @@ namespace Sensors
             {
                 onOrOff = Debuger._debug ? "off" : "on";
 
-                Console.WriteLine("\n1. to attahc a sensor to the man seatting on the chair\n" +
+                Printer.LogWelcoming("\n1. to attahc a sensor to the man seatting on the chair\n" +
                 "2. to start a new game\n" +
                 $"3. to turn {onOrOff} the debugging prints\n" +
                 $"4. to change the time limit for every turn\n" +
@@ -40,7 +40,7 @@ namespace Sensors
                         break;
                     case "3":
                         Debuger._debug = Debuger._debug ? false : true;
-                        Console.WriteLine($"The debugging prints has been turned {onOrOff}");
+                        Printer.LogNote($"The debugging prints has been turned {onOrOff}");
                         FillLoger.Log($"The debugging prints has been turned {onOrOff}");
                         break;
                     case "4":
@@ -55,17 +55,17 @@ namespace Sensors
                     case "1000":
                         FillLoger.Log("The game has stopped");
                         running = false;
-                        Console.WriteLine("have a good day");
+                        Printer.LogNote("have a good day");
                         break;
                     default:
-                        Console.WriteLine("invalid input");
+                        Printer.LogError("invalid input");
                         break;
                 }
             }            
         }
         public static string GetChoiceSensor()
         {
-            Console.WriteLine("1. Light\n" +
+            Printer.LogWelcoming("1. Light\n" +
                 "2. Signal\n" +
                 "3. Magnetic\n" +
                 "4. Motion\n" +
@@ -91,7 +91,7 @@ namespace Sensors
                 case "7":
                     return "Audio";
             }
-            Console.WriteLine("invalid input");
+            Printer.LogError("invalid input");
             return GetChoiceSensor();
         }
     }

@@ -14,8 +14,8 @@ namespace Sensors.Serveces
         {
             if (_debug)
             {
-                Console.WriteLine("\nDEBUGING: ");
-                Console.WriteLine(massege + "\n");
+                string content = $"\nDEBUGING: {massege}\n";
+                Printer.LogDebugging(content);
             }
         }
     }

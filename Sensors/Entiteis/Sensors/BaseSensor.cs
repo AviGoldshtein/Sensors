@@ -53,7 +53,7 @@ namespace Sensors.Entiteis
                     allExposed = false;
                 }
             }
-            Console.WriteLine($"exposed snesors: {counterExposedSensors} / {iranian.GetWeaknesListSensors().Length}\n");
+            Printer.LogNote($"exposed snesors: {counterExposedSensors} / {iranian.GetWeaknesListSensors().Length}\n");
 
             foreach (BaseSensor sensor in tempStorege)          // return all the sensors that have mached to some weaknes, and they are out for a while
             {
@@ -67,7 +67,7 @@ namespace Sensors.Entiteis
 
             if (allExposed)
             {
-                Console.WriteLine("\ncongragulations!!!\nthe agent is exposed\nyou are ready for the next level!\n\n");
+                Printer.LogNote("\ncongragulations!!!\nthe agent is exposed\nyou are ready for the next level!\n\n");
                 InvestigationManager._SingleInstance.MoveToTheNextLevel(iranian);
                 FillLoger.Log($"{iranian.Type} agent has been exposed!");
             }

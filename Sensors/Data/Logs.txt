@@ -86,3 +86,46 @@
 19/06/2025 11:33:11: A new investigation started
 19/06/2025 11:33:11: Foot agent entered the investigation room.
 19/06/2025 11:33:21: The game has stopped
+19/06/2025 17:31:04: A new investigation started
+19/06/2025 17:31:04: Foot agent entered the investigation room.
+19/06/2025 17:31:21: A new investigation started
+19/06/2025 17:31:21: Foot agent entered the investigation room.
+19/06/2025 17:32:53: The debugging prints has been turned off
+19/06/2025 17:33:19: Squad agent entered the investigation room.
+19/06/2025 17:33:19: Foot agent has been exposed!
+19/06/2025 17:33:57: Squad agent entered the waiting room.
+19/06/2025 17:33:57: Foot agent entered the investigation room.
+19/06/2025 17:34:25: Foot agent entered the waiting room.
+19/06/2025 17:34:41: The debugging prints has been turned on
+19/06/2025 17:35:24: The game has stopped
+20/06/2025 01:48:06: A new investigation started
+20/06/2025 01:48:06: Foot agent entered the investigation room.
+20/06/2025 01:50:02: Squad agent entered the investigation room.
+20/06/2025 01:50:02: Foot agent has been exposed!
+20/06/2025 01:51:30: Squad agent entered the waiting room.
+20/06/2025 01:51:30: Foot agent entered the investigation room.
+20/06/2025 01:51:41: Foot agent entered the waiting room.
+20/06/2025 01:51:55: Squad agent entered the waiting room.
+20/06/2025 01:52:20: The debugging prints has been turned off
+20/06/2025 01:52:59: The limit time for every turn has been changed to 2 seconds.
+20/06/2025 01:53:16: The debugging prints has been turned on
+20/06/2025 01:53:21: The debugging prints has been turned off
+20/06/2025 01:54:38: A new investigation started
+20/06/2025 01:54:38: Foot agent entered the investigation room.
+20/06/2025 01:54:42: Foot agent entered the waiting room.
+20/06/2025 01:55:07: The debugging prints has been turned on
+20/06/2025 02:01:03: A new investigation started
+20/06/2025 02:01:03: Foot agent entered the investigation room.
+20/06/2025 02:02:27: A new investigation started
+20/06/2025 02:02:27: Foot agent entered the investigation room.
+20/06/2025 02:04:12: Squad agent entered the investigation room.
+20/06/2025 02:04:12: Foot agent has been exposed!
+20/06/2025 02:08:06: Senior agent entered the investigation room.
+20/06/2025 02:08:06: Squad agent has been exposed!
+20/06/2025 02:12:18: Senior agent entered the waiting room.
+20/06/2025 02:12:18: Foot agent entered the investigation room.
+20/06/2025 02:12:31: Squad agent entered the investigation room.
+20/06/2025 02:12:31: Foot agent has been exposed!
+20/06/2025 02:12:41: Squad agent entered the waiting room.
+20/06/2025 02:12:58: Senior agent entered the waiting room.
+20/06/2025 02:13:19: The debugging prints has been turned off

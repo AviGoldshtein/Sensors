@@ -22,7 +22,7 @@ namespace Sensors.Entiteis
         {
             bool allExposed = true;
             int counterExposedSensors = 0;
-            Debuger.LogDebugMessage(iranian.ToString());
+            Debuger.LogDebugMessage("\n" + iranian.ToString());
 
             bool noMatchFound;
             List<BaseSensor> tempStorege = new List<BaseSensor>();      // for a sensor that mathed once
@@ -32,6 +32,7 @@ namespace Sensors.Entiteis
                 sensor.Act(iranian);
             }
 
+            int i = 0;
             foreach (string sensorWeaknes in iranian.GetWeaknesListSensors())    // look for every weaknes a sesor that can expose it
             {
                 noMatchFound = true;
@@ -42,16 +43,17 @@ namespace Sensors.Entiteis
                         noMatchFound = false;
                         tempStorege.Add(sensor);             //  take out the sensor, so it dousnt expose another one
                         iranian.GetAttachedSensors().Remove(sensor);
-                        Debuger.LogDebugMessage("something matched");
+                        Debuger.LogDebugMessage($"sensor weaknes number {i} found a match");
                         counterExposedSensors++;          //  to know how much is exposed
                         break;
                     }
                 }
                 if (noMatchFound)
                 {
-                    Debuger.LogDebugMessage("somthing is missing in order to expose the agent");
+                    Debuger.LogDebugMessage($"sensor weaknes number {i} is missing a match");
                     allExposed = false;
                 }
+                i++;
             }
             Printer.LogNote($"exposed snesors: {counterExposedSensors} / {iranian.GetWeaknesListSensors().Length}\n");
 
